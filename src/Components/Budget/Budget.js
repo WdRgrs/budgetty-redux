@@ -7,8 +7,8 @@ import DisplayPurchases from './../shared/DisplayPurchases';
 import Loading from './../shared/Loading/Loading';
 import Nav from './../shared/Nav';
 import './Budget.css';
-
 import { connect } from "react-redux";
+import { RequestUserData } from './../../redux/userReducer';
 
 
 
@@ -36,6 +36,11 @@ class Budget extends Component {
   }
 }
 
-const mapStateToProps = state => ({ budget: state.budget })
+const mapStateToProps = state => (
+  { 
+    budget: state.budget,
+    user: state.user
+  }
+)
 
-export default connect(mapStateToProps)(Budget);
+export default connect(mapStateToProps, RequestUserData())(Budget);
